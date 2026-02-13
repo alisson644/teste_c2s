@@ -1,0 +1,57 @@
+services:
+  webscraping-manager:
+    build: webscraping-manager
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      - RAILS_MASTER_KEY
+    volumes:
+      - .:/webscraping-manager
+    ports:
+      - "3000:3000"
+
+  auth-service:
+    build: auth-service
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
+    environment:
+      - RAILS_MASTER_KEY
+    volumes:
+      - .:/auth-service
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+  notification-service:
+    build: notification-service
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3002 -b '0.0.0.0'"
+    environment:
+      - RAILS_MASTER_KEY
+    volumes:
+      - .:/notification-service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - db
+  webscraping-service:
+    build: webscraping-service
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3003 -b '0.0.0.0'"
+    environment:
+      - RAILS_MASTER_KEY
+    volumes:
+      - .:/webscraping-service
+    ports:
+      - "3003:3003"
+    depends_on:
+      - db
+  redis:
+    image: 'redislabs/redismod'
+    ports:
+      - '6379:6379'
+  db:
+    image: postgres:12.6-alpine    
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
