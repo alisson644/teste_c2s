@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="createTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nova Tarefa</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <%= simple_form_for :task, url: tasks_path,  method: :post do |f| %>
+                <div class="mb-3 mt-3">
+                    <%= f.input :title, class:"form-control", label: "Título" %>
+                </div>
+                <div class="mb-3 ">
+                    <%= f.input :url, class:"form-control", label: "URL do anúncio" %>
+                </div>
+                <div class="mb-3 d-grid ">
+                    <%= f.button :submit, "Nova Tarefa", class: "btn btn-outline-primary"%>
+                </div>
+                <div class="mb-3 d-grid ">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            <% end %>
+        </div>
+        </div>
+    </div>
+</div>

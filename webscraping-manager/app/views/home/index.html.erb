@@ -1,0 +1,41 @@
+<% if user_signed_out? %>
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="row p-3 border">
+        <p class="h4 text-center">Entrar</p>
+        <%= simple_form_for :user, url: auth_service_api_login_path,  method: :post do |f| %>
+            <div class="mb-3 mt-3">
+                <%= f.input :email, class:"form-control", label: "Email" %>
+            </div>
+            <div class="mb-3 ">
+                <%= f.input :password, class:"form-control", label: "senha" %>
+            </div>
+            <div class="mb-3 d-grid ">
+                <%= f.button :submit, "Entrar", class: "btn btn-primary" %>
+            </div>
+            <div class="mb-3 d-grid">
+                <%= link_to "Criar Conta", registrations_new_path, class: "btn btn-outline-primary" %> 
+            </div>
+        <% end %>
+    </div>
+</div>  
+<% else %>
+    <%= turbo_stream_from "task"  %>
+    <div class="container text-center mt-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Id task</th>
+                <th scope="col">Título</th>
+                <th scope="col">Status</th>
+                <th scope="col">Acao</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @tasks.each do |task| %>
+                    <%= render "tasks/task", task: task %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% end %>
+

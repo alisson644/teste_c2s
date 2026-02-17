@@ -15,11 +15,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_121318) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "link"
+    t.string "url"
     t.string "model"
     t.string "price"
     t.string "brand"
-    t.string "user_id"
+    t.string "user_mail"
+    t.string "error_message"
+    t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

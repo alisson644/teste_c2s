@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get "notifications/index"
+  resources :tasks, only: [:show, :create, :destroy, :update ]
+
+  get "registrations/edit"
+  get "registrations/new"
+  get "home/index"
+  post "/auth_service_api_login", to: "auth_api_caller#login"
+  post "/auth_service_api_create_user", to: "auth_api_caller#create_user"
+  delete "/auth_service_api_logout", to: "auth_api_caller#logout"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,7 +17,7 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
+ 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "home#index"
 end

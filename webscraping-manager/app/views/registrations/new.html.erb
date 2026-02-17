@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="row p-3 border">
+        <p class="h4 text-center">Registrar</p>
+        <%= simple_form_for :user, url: auth_service_api_create_user_path, class: "text-center",  method: :post do |f| %>
+            <div class="mb-3 mt-3">
+                <%= f.input :name, class:"form-control", label: "Nome" %>
+            </div>
+            <div class="mb-3">
+                <%= f.input :email, class:"form-control", label: "Email" %>
+            </div>
+            <div class="mb-3 ">
+                <%= f.input :password, class:"form-control", label: "senha" %>
+            </div>
+            <div class="mb-3 ">
+                <%= f.input :password_confirmation, class:"form-control", label: "Confirme senha" %>
+            </div>
+            <div class="mb-3 d-grid">
+                <%= f.button :submit, "Registrar", class: "btn btn-primary" %>
+            </div>
+            <div class="mb-3 d-grid">
+                <%= link_to "Voltar", root_path, class: "btn btn-outline-primary" %>
+            </div>
+        <% end %>
+    </div>
+</div>  
+

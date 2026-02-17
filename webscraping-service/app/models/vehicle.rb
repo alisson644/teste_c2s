@@ -1,4 +1,4 @@
 class Vehicle < ApplicationRecord
-  validates :link, presence: true
+  validates :url, presence: true
 
 end
