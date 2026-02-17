@@ -23,6 +23,10 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <%= render "nav_bar/nav_bar" %>
+    <% end %>
     <%= yield %>
+    <%= render "modal/modal" %>
   </body>
 </html>

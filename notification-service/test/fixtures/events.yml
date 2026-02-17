@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_event: 1
+  task_id: MyString
+  user_mail: MyString
+  model: MyString
+  brand: MyString
+  price: MyString
+  error_message: MyString
+  title: MyString
+
+two:
+  type_event: 1
+  task_id: MyString
+  user_mail: MyString
+  model: MyString
+  brand: MyString
+  price: MyString
+  error_message: MyString
+  title: MyString

@@ -1,0 +1,6 @@
+<tr id="<%= dom_id(task) %>">
+    <td><%= task.id %></td>
+    <td><%= link_to task.title, task %></td>
+    <td><%= task.status %></td>
+    <td><%= link_to "Delete", task,  data: { turbo_method: :delete } %> </td>
+</tr>

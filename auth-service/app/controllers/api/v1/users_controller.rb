@@ -3,7 +3,6 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   def create
     user = User.new(user_params)
-    puts user_params
     if user.save
       token = JsonWebToken.encode(user_id: user.id)
       render json: { token: token, user: user }, status: :created

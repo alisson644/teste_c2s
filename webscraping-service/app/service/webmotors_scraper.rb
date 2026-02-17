@@ -23,7 +23,7 @@ class WebmotorsScraper
 
     raise "Trigger error: #{response.code} - #{response.body}" unless response.success?
 
-    JSON.parse(response.body) 
+    JSON.parse(response.body)
   end
 
 
@@ -38,7 +38,7 @@ class WebmotorsScraper
         }
       )
 
-      raise "Status error: #{response.code} - #{response.body}" unless response.success?
+      return response unless response.success?
 
       data = JSON.parse(response.body)
       status = data["status"]
@@ -46,11 +46,12 @@ class WebmotorsScraper
       when "ready"
         return download_results(snapshot_id)
       when "failed"
-        raise "Scrape failed: #{data}"
+        return response
       else
         return download_results(snapshot_id) if data["id"].present?
+        return response if data["timestamp"].present?
         attempts += 1
-        raise "Timeout waiting for snapshot" if attempts >= max_attempts
+        return response if attempts >= max_attempts
 
         sleep interval
       end
@@ -66,8 +67,6 @@ class WebmotorsScraper
       }
     )
 
-    raise "Download error: #{response.code} - #{response.body}" unless response.success?
-
-    JSON.parse(response.body)
+    response
   end
 end

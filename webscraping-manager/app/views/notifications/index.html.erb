@@ -1,0 +1,20 @@
+ <div class="container text-center mt-3">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">tipo do evento</th>
+            <th scope="col">Id da tarefa</th>
+            <th scope="col">usuario</th>
+            <th scope="col">modelo do carro</th>
+            <th scope="col">tipo do carro</th>
+            <th scope="col">preço do carro</th>
+            <th scope="col">mensagem de erro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @notifications.each do |notification| %>
+                <%= render "notification", notification: notification %>
+            <% end %>
+        </tbody>
+    </table>
+</div>
