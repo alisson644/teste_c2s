@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params_api)
       respond_to do |format|
-        format.json { render json: @task, status: :ok}
+        format.json { render json: @task, status: :ok }
         format.turbo_stream
       end
     end
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
 
 
   def task_params_api
-    params.permit(:model, :price, :brand, :error_message, :concluded_at, :status, :id )
+    params.permit(:model, :price, :brand, :error_message, :concluded_at, :status, :id)
   end
 
   def task_params
