@@ -15,6 +15,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: db
+  username: postgres
+  password: 72b7bd77613227b903ed8d7ee1792c69
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -82,8 +85,7 @@ production:
   primary: &primary_production
     <<: *default
     database: notification_service_production
-    username: notification_service
-    password: <%= ENV["NOTIFICATION_SERVICE_DATABASE_PASSWORD"] %>
+    password: 72b7bd77613227b903ed8d7ee1792c69
   cache:
     <<: *primary_production
     database: notification_service_production_cache

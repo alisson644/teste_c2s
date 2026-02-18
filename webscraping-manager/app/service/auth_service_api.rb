@@ -1,7 +1,7 @@
 require "httparty"
 
 class AuthServiceApi
-  API_BASE = "http://localhost:3000".freeze
+  API_BASE = "http://auth-service:3000".freeze
 
   def create_user(user)
     users = { user: }

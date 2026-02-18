@@ -81,3 +81,7 @@ webscraping-service/config/master.key
 webscraping-service/app/assets/builds/*
 !webscraping-service/app/assets/builds/.keep
 webscraping-service/node_modules
+
+# temp files
+tmp/*
+.env

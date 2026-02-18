@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   allow_browser versions: :modern
 
-  def current_user(access_token, refresh_token, email)
+  def current_user(access_token:, refresh_token:, email:)
   Rails.cache.write("access_token", access_token)
   Rails.cache.write("refresh_token", refresh_token)
   Rails.cache.write("email", email)

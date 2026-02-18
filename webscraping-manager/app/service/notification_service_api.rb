@@ -1,7 +1,7 @@
 require "httparty"
 
 class NotificationServiceApi
-  API_BASE = "http://localhost:3002".freeze
+  API_BASE = "http://notification-service:3002".freeze
 
   def create_notification(user_mail:, task_id:)
     event = { user_mail:, task_id: }

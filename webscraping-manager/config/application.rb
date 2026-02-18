@@ -17,6 +17,10 @@ module WebscrapingManager
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    config.active_support.use_message_serializer_for_metadata = false
+    config.active_support.message_serializer = :marshal
+    config.hosts << "webscraping-manager:8080"
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
