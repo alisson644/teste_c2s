@@ -10,7 +10,7 @@ class WebScrapingManagerApi
       "#{API_BASE}/tasks/#{task_id}",
       body: task
     )
-    puts response
+
     response
   end
   def send_error_vehicle(task_id:, error_message:, status:)
