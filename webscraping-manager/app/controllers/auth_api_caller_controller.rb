@@ -4,7 +4,7 @@ class AuthApiCallerController < ApplicationController
     api_response = @auth_service_api.create_user(user_params)
 
     if api_response.success?
-      current_user(email: params["user"]["email"], access_token: api_response.body["access_token"], refresh_token: api_response.body["refresh_token"] )
+      current_user(access_token: api_response.body["access_token"], refresh_token: api_response.body["refresh_token"], email: params["user"]["email"] )
       redirect_to root_path
     else
       render registrations_new_path, notice: "API call failed: #{api_response.message}"
@@ -16,7 +16,7 @@ class AuthApiCallerController < ApplicationController
 
     if api_response.success?
       body = JSON.parse(api_response.body)
-      current_user(body["access_token"], body["refresh_token"], params["user"]["email"])
+      current_user(access_token: body["access_token"], refresh_token: body["refresh_token"], email: params["user"]["email"])
       redirect_to root_path
     else
       flash.now[:alert] = "API call failed: #{api_response.body["error"]}"

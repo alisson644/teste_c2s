@@ -1,7 +1,7 @@
 require "httparty"
 
 class WebScrapingServiceApi
-  API_BASE = "http://localhost:3001".freeze
+  API_BASE = "http://webscraping-service:3001".freeze
 
   def search_vehicle(url:, user_mail:, task_id:)
     vehicle = { url:, user_mail:, task_id: }

@@ -21,7 +21,7 @@ module Api
           render json: { status: "SUCCESS", message: "Task create" }, status: :ok
         else
           VehicleSearchJob.perform_async(url_convert, params["user_mail"], params["task_id"])
-          render json: { status: "Fails", message: "Task create" }, status: :ok
+          render json: { status: "Pending", message: "Task create" }, status: :ok
         end
       end
 

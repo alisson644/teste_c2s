@@ -45,7 +45,7 @@ class TasksController < ApplicationController
 
 
   def task_params_api
-    params.permit(:model, :price, :brand, :error_message, :concluded_at, :status )
+    params.permit(:model, :price, :brand, :error_message, :concluded_at, :status, :id )
   end
 
   def task_params

@@ -68,6 +68,8 @@ Rails.application.configure do
   #   port: 587,
   #   authentication: :plain
   # }
+  config.require_master_key = true
+  config.hosts << "webscraping-manager:8080"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

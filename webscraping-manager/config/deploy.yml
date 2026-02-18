@@ -84,7 +84,6 @@ builder:
   # args:
   #   RUBY_VERSION: 3.2.8
   # secrets:
-  #   - GITHUB_TOKEN
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
